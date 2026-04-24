@@ -1,28 +1,60 @@
-# ProyectoFinalArzamendia
+# 🏥 Clínica Central IMA | Proyecto Final JavaScript
 
-Proyecto final de JavaScript basado en un **simulador interactivo de turnos médicos** para **Clínica Central IMA**.
+Simulador interactivo de turnos médicos desarrollado como proyecto final del curso de JavaScript.
 
-## ¿Qué permite hacer?
+---
 
-- registrarse como paciente
-- iniciar y cerrar sesión
-- cargar especialidades desde un archivo JSON
-- reservar turnos
-- buscar y filtrar turnos
-- cancelar turnos
-- guardar datos con `localStorage`
-- usar librerías externas: `SweetAlert2` y `Toastify`
+## 🌐 Accesos al proyecto
 
-## Estructura del proyecto
+🔗 **Repositorio GitHub**  
+https://github.com/IvannaAr94/POYECTO-FINAL-CLINICA-Arzamendia-JS-CoderH  
 
-- `index.html` → estructura principal del sitio
-- `css/styles.css` → estilos completos del proyecto
-- `js/script.js` → lógica del simulador
-- `data/especialidades.json` → datos remotos de especialidades médicas
-- `img/` → imágenes del proyecto
+🚀 **GitHub Pages (deploy online)**  
+https://ivannaar94.github.io/POYECTO-FINAL-CLINICA-Arzamendia-JS-CoderH/
 
-## Importante
+---
 
-Para que la carga del JSON funcione correctamente, conviene abrir el proyecto con **Live Server** o publicarlo en **GitHub Pages**.
+## 📌 Descripción
 
-De todos modos, el proyecto también tiene una **carga de respaldo** en JavaScript para que las especialidades no queden vacías si el JSON falla.
+Este proyecto simula un sistema completo de gestión de turnos médicos para la **Clínica Central IMA**, permitiendo al usuario interactuar con funcionalidades típicas de una aplicación real.
+
+Está enfocado en aplicar conceptos clave de JavaScript como manipulación del DOM, eventos, almacenamiento local y consumo de datos externos.
+
+---
+
+## ⚙️ Funcionalidades principales
+
+- 👤 Registro de pacientes  
+- 🔐 Inicio y cierre de sesión  
+- 📋 Carga dinámica de especialidades desde JSON  
+- 📅 Reserva de turnos médicos  
+- 🔎 Búsqueda y filtrado de turnos  
+- ❌ Cancelación de turnos  
+- 💾 Persistencia de datos con `localStorage`  
+- 🔔 Notificaciones con `SweetAlert2` y `Toastify`  
+
+---
+
+## 🧠 Tecnologías utilizadas
+
+- HTML5  
+- CSS3 (diseño moderno + responsive)  
+- JavaScript (DOM, eventos, lógica del sistema)  
+- JSON (datos externos)  
+- Librerías:
+  - SweetAlert2
+  - Toastify  
+
+---
+
+## 📁 Estructura del proyecto
+📦 ProyectoFinal-Arzamendia
+┣ 📂 css
+┃ ┗ styles.css
+┣ 📂 js
+┃ ┗ script.js
+┣ 📂 data
+┃ ┗ especialidades.json
+┣ 📂 img
+┣ 📄 index.html
+┣ 📄 README.md
