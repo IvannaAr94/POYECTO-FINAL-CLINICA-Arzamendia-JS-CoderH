@@ -18,6 +18,8 @@ https://ivannaar94.github.io/POYECTO-FINAL-CLINICA-Arzamendia-JS-CoderH/
 
 Este proyecto simula un sistema completo de gestión de turnos médicos para la **Clínica Central IMA**, permitiendo al usuario interactuar con funcionalidades típicas de una aplicación real.
 
+Incluye persistencia de datos mediante `localStorage`, consumo de datos externos desde un archivo JSON y uso de librerías externas para mejorar la experiencia de usuario.
+
 Está enfocado en aplicar conceptos clave de JavaScript como manipulación del DOM, eventos, almacenamiento local y consumo de datos externos.
 
 ---
