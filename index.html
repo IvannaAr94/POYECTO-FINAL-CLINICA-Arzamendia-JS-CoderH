@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Central IMA | Proyecto Final JavaScript</title>
+  <meta name="description"
+    content="Simulador interactivo de turnos médicos de Clínica Central IMA con registro, login, reserva, cancelación y persistencia de datos." />
+
+  <!-- Icono del sitio -->
+  <link rel="icon" type="image/png" href="img/icono2.png" />
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Fuente principal -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Iconos y librerías visuales -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+</head>
+
+<body>
+  <!-- =========================
+       BARRA DE NAVEGACIÓN
+       ========================= -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a class="nav-logo" href="#inicio">
+        <img src="img/icono2.png" alt="Logo Clínica Central IMA" class="logo-img" />
+        <span class="logo-text">Clínica Central <span class="text-primary">IMA</span></span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#especialidades" class="nav-link">Especialidades</a>
+        <a href="#turnos" class="nav-link">Turnos</a>
+        <a href="#portal" class="nav-link">Portal</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </div>
+
+      <a href="#portal" class="btn btn-primary nav-portal-btn">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Ingresar al portal</a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- =========================
+       HERO / PRESENTACIÓN
+       ========================= -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        Sistema de turnos online disponible
+      </div>
+
+      <h1 class="hero-title">
+        Tu salud, nuestra <span class="hero-highlight">prioridad</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Reservá tu turno médico en segundos. Contamos con especialistas de primer nivel
+        y la mejor atención para vos y tu familia.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#turnos" class="btn btn-white btn-lg">📅 Reservar Turno →</a>
+        <a href="#portal" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+          Ingresar al portal</a>
+      </div>
+
+      <div class="hero-features">
+        <div class="hero-feature">🛡️ Profesionales certificados</div>
+        <div class="hero-feature">⏱️ Atención rápida</div>
+        <div class="hero-feature">📅 Turnos online</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       TARJETAS DE ESTADÍSTICAS
+       ========================= -->
+  <section class="section stats-section">
+    <div class="container">
+      <div class="stats-grid" id="statsGrid">
+        <article class="stat-card">
+          <span class="stat-label">Especialidades</span>
+          <strong id="statSpecialties">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Pacientes registrados</span>
+          <strong id="statUsers">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Turnos cargados</span>
+          <strong id="statAppointments">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Sesión actual</span>
+          <strong id="statSession">Sin iniciar</strong>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       ESPECIALIDADES
+       Se cargan desde el archivo JSON
+       ========================= -->
+  <section class="section" id="especialidades">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nuestro equipo</span>
+        <h2 class="section-title">Especialidades Médicas</h2>
+        <p class="section-desc">Contamos con profesionales especializados en diversas áreas de la salud.</p>
+      </div>
+      <div class="specialties-grid" id="specialtiesGrid"></div>
+    </div>
+  </section>
+
+  <!-- =========================
+       TURNOS
+       Formulario + panel de gestión
+       ========================= -->
+  <section class="section section-alt" id="turnos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Reservas</span>
+        <h2 class="section-title">Reservá tu Turno</h2>
+        <p class="section-desc">Completá el flujo completo: registro, inicio de sesión, reserva, búsqueda y cancelación.
+        </p>
+      </div>
+
+      <div class="appointment-layout">
+        <form class="appointment-form" id="appointmentForm">
+          <div class="form-group">
+            <label for="nombrePaciente">Nombre completo</label>
+            <input type="text" id="nombrePaciente" placeholder="Ej: Ana Pérez" value="Ana Pérez" required />
+          </div>
+
+          <div class="form-group">
+            <label for="dniPaciente">DNI</label>
+            <input type="text" id="dniPaciente" placeholder="Ej: 30123456" value="30123456" required />
+          </div>
+
+          <div class="form-group">
+            <label for="especialidad">Especialidad</label>
+            <select id="especialidad" required>
+              <option value="">Seleccioná una especialidad</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="fechaTurno">Fecha</label>
+            <input type="date" id="fechaTurno" required />
+          </div>
+
+          <div class="form-group">
+            <label for="horarioTurno">Horario</label> <!-- horarioTurno = horario elegido para la consulta -->
+            <select id="horarioTurno" required>
+              <option value="">Seleccioná un horario</option>
+              <option value="08:00">08:00</option>
+              <option value="09:00">09:00</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="14:00">14:00</option>
+              <option value="15:00">15:00</option>
+              <option value="16:00">16:00</option>
+              <option value="17:00">17:00</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-full">Confirmar Turno</button>
+        </form>
+
+        <aside class="appointments-panel">
+          <div class="panel-header panel-stack">
+            <div>
+              <h3>Gestión de turnos</h3>
+              <p class="panel-subtitle">Buscá, filtrá o eliminá turnos cargados.</p>
+            </div>
+            <button type="button" class="btn btn-secondary" id="clearAppointmentsBtn">Limpiar turnos</button>
+          </div>
+
+          <div class="appointments-toolbar">
+            <input type="text" id="searchAppointment" placeholder="Buscar por nombre o DNI" />
+            <select id="filterSpecialty">
+              <option value="all">Todas las especialidades</option>
+            </select>
+          </div>
+
+          <div id="appointmentsList" class="appointments-list"></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       PORTAL DEL PACIENTE
+       Registro e inicio de sesión
+       ========================= -->
+  <section class="section" id="portal">
+    <div class="row align-items-start">
+      <div class="section-header">
+        <span class="section-tag">Acceso</span>
+        <h2 class="section-title">Portal del Paciente</h2>
+
+      </div>
+
+      <div id="sessionPanel" class="session-panel hidden">
+        <div class="session-info">
+          <strong>Sesión activa:</strong>
+          <span id="sessionUserText"></span>
+        </div>
+        <button type="button" class="btn btn-secondary" id="logoutBtn">Cerrar sesión</button>
+      </div>
+
+      <div class="portal-layout">
+        <form class="portal-form" id="registerForm">
+          <h3 class="portal-form-title">Registrarse</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="regName">Nombre</label>
+              <input type="text" id="regName" placeholder="Ej: Ana" required />
+            </div>
+            <div class="form-group">
+              <label for="regLastname">Apellido</label>
+              <input type="text" id="regLastname" placeholder="Ej: Pérez" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" placeholder="Ej: ana@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="regDni">DNI</label>
+            <input type="text" id="regDni" placeholder="Ej: 30123456" required />
+          </div>
+
+          <div class="form-group">
+            <label for="regObraSocial">Obra social</label>
+            <select id="regObraSocial">
+              <option value="">Sin obra social</option>
+              <option value="OSDE">OSDE</option>
+              <option value="Swiss Medical">Swiss Medical</option>
+              <option value="Galeno">Galeno</option>
+              <option value="Medifé">Medifé</option>
+              <option value="IOMA">IOMA</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="regPassword">Contraseña</label>
+            <input type="password" id="regPassword" placeholder="Ejemplo: clave123" required />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-full">Crear cuenta</button>
+        </form>
+
+        <form class="portal-form" id="loginForm">
+          <h3 class="portal-form-title">Iniciar sesión</h3>
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" placeholder="Ej: ana@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Contraseña</label>
+            <input type="password" id="loginPassword" placeholder="Ejemplo: clave123" required />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-full">Iniciar sesión</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       CONTACTO
+       ========================= -->
+  <section class="section section-alt" id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Contacto</span>
+        <h2 class="section-title">¿Cómo encontrarnos?</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Dirección</h3>
+          <p>Av. Siempre Oeste 1234, Buenos Aires</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <h3>Teléfono</h3>
+          <p>(011) 1234-5678</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">✉️</div>
+          <h3>Email</h3>
+          <p>info@clinicacentralima.com.ar</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">🕐</div>
+          <h3>Horarios</h3>
+          <p>Lunes a viernes de 8:00 a 20:00</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       PIE DE PÁGINA
+       ========================= -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-logo footer-logo-wrap">
+          <img src="img/icono2.png" alt="Logo Clínica Central IMA" class="footer-logo-img" />
+          <strong>Clínica Central IMA</strong>
+        </div>
+        <p class="footer-desc">
+          Tu Clinica de confianza. Profesionales certificados, atención personalizada y turnos online
+          para cuidar tu salud y bienestar.
+        </p>
+      </div>
+
+      <div>
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#turnos">Reservar turno</a></li>
+          <li><a href="#portal">Portal del paciente</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>📍 Av. Siempre Oeste 1234, Buenos Aires</li>
+          <li>📞 (011) 1234-5678</li>
+          <li>✉️ info@clinicacentralima.com.ar</li>
+        </ul>
+
+        <div class="redes-sociales">
+          <a href="https://wa.me/5491112345678" target="_blank" rel="noopener noreferrer"><i
+              class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><i
+              class="fa-brands fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">© 2026 Clínica Central IMA. Proyecto Final JavaScript.</div>
+  </footer>
+
+  <!-- Librerías externas solicitadas por la consigna -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <!-- Lógica principal del proyecto -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>

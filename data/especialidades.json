@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "nombre": "Clínica Médica",
+    "doctor": "Dr. Martín López",
+    "obraSocial": "OSDE",
+    "emoji": "🩺",
+    "colorFondo": "#dbeafe",
+    "colorTexto": "#2563eb",
+    "descripcion": "Consultas generales, controles y seguimiento clínico.",
+    "duracion": "30 min"
+  },
+  {
+    "id": 2,
+    "nombre": "Pediatría",
+    "doctor": "Dra. Paula Santucho",
+    "obraSocial": "Swiss Medical",
+    "emoji": "👶",
+    "colorFondo": "#fce7f3",
+    "colorTexto": "#db2777",
+    "descripcion": "Atención integral para bebés, niños y adolescentes.",
+    "duracion": "25 min"
+  },
+  {
+    "id": 3,
+    "nombre": "Dermatología",
+    "doctor": "Dr. Tomás Duarte",
+    "obraSocial": "Galeno",
+    "emoji": "✨",
+    "colorFondo": "#fef3c7",
+    "colorTexto": "#d97706",
+    "descripcion": "Control de piel, lunares, acné y tratamientos especializados.",
+    "duracion": "20 min"
+  },
+  {
+    "id": 4,
+    "nombre": "Cardiología",
+    "doctor": "Dra. Valentina Juárez",
+    "obraSocial": "Medifé",
+    "emoji": "❤️",
+    "colorFondo": "#fee2e2",
+    "colorTexto": "#dc2626",
+    "descripcion": "Chequeos cardiovasculares, ECG y seguimiento cardíaco.",
+    "duracion": "40 min"
+  },
+  {
+    "id": 5,
+    "nombre": "Traumatología",
+    "doctor": "Dr. Diego Zapata",
+    "obraSocial": "IOMA",
+    "emoji": "🦴",
+    "colorFondo": "#d1fae5",
+    "colorTexto": "#059669",
+    "descripcion": "Lesiones óseas, musculares y rehabilitación.",
+    "duracion": "30 min"
+  },
+  {
+    "id": 6,
+    "nombre": "Neurología",
+    "doctor": "Dra. Luz Arzamendia",
+    "obraSocial": "Todas",
+    "emoji": "🧠",
+    "colorFondo": "#f3e8ff",
+    "colorTexto": "#7c3aed",
+    "descripcion": "Consulta neurológica, cefaleas y seguimiento clínico.",
+    "duracion": "35 min"
+  },
+  {
+    "id": 7,
+    "nombre": "Ginecología",
+    "doctor": "Dra. Camila Ferreira",
+    "obraSocial": "OSDE / Swiss Medical",
+    "emoji": "🌷",
+    "colorFondo": "#fdf2f8",
+    "colorTexto": "#be185d",
+    "descripcion": "Controles ginecológicos, estudios preventivos y orientación integral.",
+    "duracion": "30 min"
+  },
+  {
+    "id": 8,
+    "nombre": "Oftalmología",
+    "doctor": "Dr. Ignacio Rivas",
+    "obraSocial": "Particular / Galeno",
+    "emoji": "👁️",
+    "colorFondo": "#ecfeff",
+    "colorTexto": "#0891b2",
+    "descripcion": "Controles visuales, receta de lentes y estudios oftalmológicos.",
+    "duracion": "20 min"
+  }
+]
